@@ -11,8 +11,7 @@ namespace OrganizerApiTest
         public void TestAddToDoEntryMethod()
         {
             Day day = new Day();
-            ToDoEntry toDoEntry = new ToDoEntry();
-            day.AddToDoEntry(toDoEntry);
+            day.AddToDoEntry("");
             int entryCount = day.toDoEntries.Count;
             Assert.AreEqual(1, entryCount);
         }
@@ -20,9 +19,8 @@ namespace OrganizerApiTest
         public void TestAddScheduleEntryMethod()
         {
             Day day = new Day();
-            ScheduleEntry scheduleEntry = new ScheduleEntry();
-            DateTime startTime = new DateTime();
-            day.AddScheduleEntry(startTime,scheduleEntry);
+          
+            day.AddScheduleEntry("10:00","12:00","dentist");
             int entryCount = day.scheduleEntries.Count;
             Assert.AreEqual(1, entryCount);
         }

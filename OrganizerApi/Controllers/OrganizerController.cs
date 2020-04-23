@@ -13,7 +13,7 @@ namespace OrganizerApi.Controllers
     [ApiController]
     public class OrganizerController : ControllerBase
     {
-        OrganizerServices organizerServices = OrganizerServices.GetInstance();
+        OrganizerService organizerServices = OrganizerService.GetInstance();
 
         // GET: api/Organizer
         [HttpGet]
@@ -23,9 +23,15 @@ namespace OrganizerApi.Controllers
         }
         [Route("addtodo")]
         [HttpPost]
-        public void CreateTodo(string date, string text)
+        public void CreateTodoEntry(string date, string text)
         {
-            organizerServices.CreateTodo(date,text);
+            organizerServices.CreateTodoEntry(date,text);
+        }
+        [Route("addschedule")]
+        [HttpPost]
+        public void CreateScheduleEntry(string date,string startTime, string endTime, string text)
+        {
+            organizerServices.CreateScheduleEntry(date, startTime, endTime, text);
         }
     }
 }

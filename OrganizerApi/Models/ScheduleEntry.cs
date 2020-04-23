@@ -7,5 +7,8 @@ namespace OrganizerApi.Models
 {
     public class ScheduleEntry
     {
+        public DateTime startTime { get; set; }
+        public DateTime endTime { get; set; }
+        public string text { get; set; }
     }
 }

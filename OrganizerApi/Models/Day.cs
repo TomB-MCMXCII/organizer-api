@@ -20,13 +20,18 @@ namespace OrganizerApi.Models
             toDoEntries = new List<ToDoEntry>();
             scheduleEntries = new Dictionary<DateTime, ScheduleEntry>();
         }
-        public void AddToDoEntry(ToDoEntry toDoEntry)
+        public void AddToDoEntry(string text)
         {
-            toDoEntries.Add(toDoEntry);
+            toDoEntries.Add(new ToDoEntry() { Text = text});
         }
-        public void AddScheduleEntry(DateTime startTime,ScheduleEntry scheduleEntry)
+        public void AddScheduleEntry(string startTime,string endTime,string text)
         {
-            scheduleEntries.Add(startTime,scheduleEntry);
+            scheduleEntries.Add(DateTime.Parse(startTime),
+                new ScheduleEntry() { 
+                    startTime = DateTime.Parse(startTime),
+                    endTime = DateTime.Parse(endTime),
+                    text = text
+                });
         }
         private int GetIso8601WeekOfYear(DateTime time)
         {

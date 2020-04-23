@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace OrganizerApi.Services
 {
-    public class OrganizerServices
+    public class OrganizerService
     {
-        private OrganizerServices() { }
-        private static OrganizerServices organizerServicesInstance = new OrganizerServices();
-        public static OrganizerServices GetInstance() => organizerServicesInstance;
+        private OrganizerService() { }
+        private static OrganizerService organizerServicesInstance = new OrganizerService();
+        public static OrganizerService GetInstance() => organizerServicesInstance;
 
         public Year year = new Year();
 
@@ -18,10 +18,15 @@ namespace OrganizerApi.Services
         {
             return year;
         }
-        public void CreateTodo(string date, string text)
+        public void CreateTodoEntry(string date, string text)
         {
             var day = year.days.Find(x => x.date == DateTime.Parse(date));
-            day.toDoEntries.Add(new ToDoEntry(text));
+            day.AddToDoEntry(text);
+        }
+        public void CreateScheduleEntry(string date, string startTime, string endTime, string text)
+        {
+            var day = year.days.Find(x => x.date == DateTime.Parse(date));
+            day.AddScheduleEntry(startTime, endTime, text);
         }
     }
 }
