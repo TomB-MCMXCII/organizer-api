@@ -7,5 +7,14 @@ namespace OrganizerApi.Models
 {
     public class ToDoEntry
     {
+        public string Text { get; set; }
+        public ToDoEntry(string text)
+        {
+            Text = text;
+        }
+        public ToDoEntry()
+        {
+
+        }
     }
 }
