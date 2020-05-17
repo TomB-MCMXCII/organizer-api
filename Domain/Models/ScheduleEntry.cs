@@ -9,9 +9,9 @@ namespace OrganizerApi.Domain
     public class ScheduleEntry
     {
         public int Id { get; set; }
-        public DateTime startTime { get; set; }
-        public DateTime endTime { get; set; }
-        public string text { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Text { get; set; }
         public virtual Day Day { get; set; }
     }
 }
