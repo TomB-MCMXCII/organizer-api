@@ -1,7 +1,7 @@
 ﻿using OrganizerApi.Domain;
 using System;
 
-namespace Services.Services
+namespace OrganizerApi.Services
 {
     public class ScheduleService<T> : IScheduleService<T> where T : IScheduleEntryDto
     {

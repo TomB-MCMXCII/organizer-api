@@ -10,6 +10,7 @@ namespace Domain.DTOs
     {
         public ICollection<INoteDto> NoteDtos { get; set; }
         public ICollection<IToDoDto> ToDoDtos { get; set; }
+        public ICollection<IScheduleEntryDto> ScheduleDtos { get; set; }
         public DateTime Date { get; set ; }
     }
 }

@@ -10,5 +10,6 @@ namespace Domain.Interfaces
         DateTime Date { get; set; }
         ICollection<INoteDto> NoteDtos { get; set; }
         ICollection<IToDoDto> ToDoDtos { get; set; }
+        ICollection<IScheduleEntryDto> ScheduleDtos { get; set; }
     }
 }

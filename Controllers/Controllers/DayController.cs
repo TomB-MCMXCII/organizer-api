@@ -2,6 +2,7 @@
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using OrganizerApi.Domain;
+using System.Collections.Generic;
 
 namespace Controllers.Controllers
 {
@@ -27,6 +28,12 @@ namespace Controllers.Controllers
         public IDayDto GetDay(string date)
         {
            return  dayService.GetDay(date);
+        }
+        [Route("api/day/getDays")]
+        [HttpGet]
+        public ICollection<IDayDto> GetDays()
+        {
+            return dayService.GetDays();
         }
 
     }

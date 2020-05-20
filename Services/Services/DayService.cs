@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Services.Services
+namespace OrganizerApi.Services
 {
     public class DayService : IDayService
     {
@@ -34,6 +34,7 @@ namespace Services.Services
             var day = organizerDbContext.Days.Include(x => x.ToDoEntries).Include(x => x.Notes).Include(x => x.ScheduleEntries).Where(x => x.date == dateTime).First();
             var noteDtos = new List<INoteDto>();
             var toDoDtos = new List<IToDoDto>();
+            var shceduleDtos = new List<IScheduleEntryDto>();
             foreach (var a in day.Notes)
             {
                 noteDtos.Add(new NoteDto()
@@ -51,6 +52,16 @@ namespace Services.Services
                     IsDone = a.IsDone,
                 }) ;
             }
+            foreach (var a in day.ScheduleEntries)
+            {
+                shceduleDtos.Add(new ScheduleEntryDto()
+                {
+                    Date = a.Day.date.ToString(),
+                    Text = a.Text,
+                    StartTime = a.StartTime.ToString(),
+                    EndTime = a.EndTime.ToString()
+                });
+            }
             return new DayDto()
             {
                 Date = day.date,
@@ -61,7 +72,50 @@ namespace Services.Services
 
         public ICollection<IDayDto> GetDays()
         {
-            throw new NotImplementedException();
+            var days = organizerDbContext.Days.Include(x => x.ToDoEntries).Include(x => x.Notes).Include(x => x.ScheduleEntries);
+            var daysList = new List<IDayDto>();
+            foreach(var d in days)
+            {
+                var noteDtos = new List<INoteDto>();
+                var toDoDtos = new List<IToDoDto>();
+                var scheduleDtos = new List<IScheduleEntryDto>();
+                foreach (var a in d.Notes)
+                {
+                    noteDtos.Add(new NoteDto()
+                    {
+                        date = a.Day.date.ToString(),
+                        text = a.Text
+                    });
+                }
+                foreach (var a in d.ToDoEntries)
+                {
+                    toDoDtos.Add(new ToDoDto()
+                    {
+                        Date = a.Day.date.ToString(),
+                        Text = a.Text,
+                        IsDone = a.IsDone,
+                    });
+                }
+                foreach (var a in d.ScheduleEntries)
+                {
+                    scheduleDtos.Add(new ScheduleEntryDto()
+                    {
+                        Date = a.Day.date.ToString(),
+                        Text = a.Text,
+                        StartTime = a.StartTime.ToString(),
+                        EndTime = a.EndTime.ToString()
+                    });
+                }
+                var day = new DayDto()
+                {
+                    Date = d.date,
+                    ToDoDtos = toDoDtos,
+                    NoteDtos = noteDtos,
+                    ScheduleDtos = scheduleDtos
+                };
+                daysList.Add(day);
+            }
+            return daysList;
         }
     }
 }
