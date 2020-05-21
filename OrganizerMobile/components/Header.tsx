@@ -1,14 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet, Alert} from 'react-native'
 import {Header,Icon} from 'react-native-elements'
-import LinearGradient from 'react-native-linear-gradient';
 
-const Header1 = () => {
+const AppHeader = () => {
     return (
         <View>
             <Header
             placement="center"
-            leftComponent={{ icon: 'home', color: '#fff', size: 35, onPress: () => Alert.alert('ea'), }}
+            leftComponent={{ icon: 'home', color: '#fff', size: 35, onPress: () => console.log() }}
             centerComponent={{ text: 'Today', style: { color: '#fff', fontSize:25 } }}
             rightComponent={{ icon: 'refresh', color: '#fff', size: 35 }}
             containerStyle={{
@@ -20,8 +19,4 @@ const Header1 = () => {
     );
 };
 
-const styles = StyleSheet.create({
-   
-})
-
-export default Header1;
+export default AppHeader;

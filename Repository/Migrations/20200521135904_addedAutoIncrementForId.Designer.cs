@@ -10,8 +10,8 @@ using OrganizerApi.Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(OrganizerDbContext))]
-    [Migration("20200514132045_intial5")]
-    partial class intial5
+    [Migration("20200521135904_addedAutoIncrementForId")]
+    partial class addedAutoIncrementForId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,11 @@ namespace Repository.Migrations
                 {
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.HasKey("date");
 
@@ -61,13 +66,13 @@ namespace Repository.Migrations
                     b.Property<DateTime>("Daydate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("endTime")
+                    b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("startTime")
+                    b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("text")
+                    b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

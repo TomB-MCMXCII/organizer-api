@@ -24,6 +24,11 @@ namespace Repository.Migrations
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.HasKey("date");
 
                     b.ToTable("Days");
@@ -59,13 +64,13 @@ namespace Repository.Migrations
                     b.Property<DateTime>("Daydate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("endTime")
+                    b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("startTime")
+                    b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("text")
+                    b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

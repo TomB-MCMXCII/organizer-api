@@ -12,5 +12,6 @@ namespace Domain.DTOs
         public ICollection<IToDoDto> ToDoDtos { get; set; }
         public ICollection<IScheduleEntryDto> ScheduleDtos { get; set; }
         public DateTime Date { get; set ; }
+        public int id { get ; set; }
     }
 }

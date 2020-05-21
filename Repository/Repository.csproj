@@ -5,6 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200514123904_intiål.cs" />
+    <Compile Remove="Migrations\20200514123904_intiål.Designer.cs" />
+    <Compile Remove="Migrations\20200514124115_intial3.cs" />
+    <Compile Remove="Migrations\20200514124115_intial3.Designer.cs" />
+    <Compile Remove="Migrations\20200514131859_intial4.cs" />
+    <Compile Remove="Migrations\20200514131859_intial4.Designer.cs" />
+    <Compile Remove="Migrations\20200514132045_intial5.cs" />
+    <Compile Remove="Migrations\20200514132045_intial5.Designer.cs" />
+    <Compile Remove="Migrations\20200521134625_addedIdForDayModel.cs" />
+    <Compile Remove="Migrations\20200521134625_addedIdForDayModel.Designer.cs" />
+    <Compile Remove="Migrations\20200521135058_addedIdForDayModel.cs" />
+    <Compile Remove="Migrations\20200521135058_addedIdForDayModel.Designer.cs" />
+    <Compile Remove="Migrations\20200521135744_addedAutoIncrementForId.cs" />
+    <Compile Remove="Migrations\20200521135744_addedAutoIncrementForId.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
       <PrivateAssets>all</PrivateAssets>

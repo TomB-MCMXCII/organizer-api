@@ -1,19 +1,18 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native'
-import Header1 from './components/Header'
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import DaysList from './components/DaysList';
+import AppHeader from './components/Header';
 
-const App = () => {
+class App extends Component {
+  
+  render() {
     return (
-        <View style={styles.container}>
-            <Header1/>
-        </View>
-    );
-};
-
-const styles = StyleSheet.create({
-    container: {
-      
-     }
-})
+      <View>
+        <AppHeader/>
+        <DaysList/>
+      </View>
+    )
+  }
+}
 
 export default App;

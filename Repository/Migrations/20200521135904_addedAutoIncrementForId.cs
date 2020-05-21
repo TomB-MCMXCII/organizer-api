@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repository.Migrations
 {
-    public partial class intiål : Migration
+    public partial class addedAutoIncrementForId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,13 +11,13 @@ namespace Repository.Migrations
                 name: "Days",
                 columns: table => new
                 {
+                    date = table.Column<DateTime>(nullable: false),
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    date = table.Column<DateTime>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Days", x => x.Id);
+                    table.PrimaryKey("PK_Days", x => x.date);
                 });
 
             migrationBuilder.CreateTable(
@@ -27,17 +27,17 @@ namespace Repository.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(nullable: true),
-                    DayId = table.Column<int>(nullable: true)
+                    Daydate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Notes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Notes_Days_DayId",
-                        column: x => x.DayId,
+                        name: "FK_Notes_Days_Daydate",
+                        column: x => x.Daydate,
                         principalTable: "Days",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "date",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,20 +46,20 @@ namespace Repository.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    startTime = table.Column<DateTime>(nullable: false),
-                    endTime = table.Column<DateTime>(nullable: false),
-                    text = table.Column<string>(nullable: true),
-                    DayId = table.Column<int>(nullable: true)
+                    StartTime = table.Column<DateTime>(nullable: false),
+                    EndTime = table.Column<DateTime>(nullable: false),
+                    Text = table.Column<string>(nullable: true),
+                    Daydate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ScheduleEntries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ScheduleEntries_Days_DayId",
-                        column: x => x.DayId,
+                        name: "FK_ScheduleEntries_Days_Daydate",
+                        column: x => x.Daydate,
                         principalTable: "Days",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "date",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,34 +69,34 @@ namespace Repository.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(nullable: true),
-                    DayId = table.Column<int>(nullable: true),
+                    Daydate = table.Column<DateTime>(nullable: false),
                     IsDone = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ToDoEntries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ToDoEntries_Days_DayId",
-                        column: x => x.DayId,
+                        name: "FK_ToDoEntries_Days_Daydate",
+                        column: x => x.Daydate,
                         principalTable: "Days",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "date",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notes_DayId",
+                name: "IX_Notes_Daydate",
                 table: "Notes",
-                column: "DayId");
+                column: "Daydate");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ScheduleEntries_DayId",
+                name: "IX_ScheduleEntries_Daydate",
                 table: "ScheduleEntries",
-                column: "DayId");
+                column: "Daydate");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ToDoEntries_DayId",
+                name: "IX_ToDoEntries_Daydate",
                 table: "ToDoEntries",
-                column: "DayId");
+                column: "Daydate");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

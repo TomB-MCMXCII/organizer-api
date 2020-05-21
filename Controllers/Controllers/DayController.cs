@@ -1,11 +1,13 @@
 ﻿using Domain.DTOs;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using OrganizerApi.Domain;
 using System.Collections.Generic;
 
 namespace Controllers.Controllers
 {
+    [EnableCors("myPolicy")]
     [ApiController]
     public class DayController : ControllerBase
     {

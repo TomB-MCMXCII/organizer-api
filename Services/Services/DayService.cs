@@ -108,6 +108,7 @@ namespace OrganizerApi.Services
                 }
                 var day = new DayDto()
                 {
+                    id = d.Id,
                     Date = d.date,
                     ToDoDtos = toDoDtos,
                     NoteDtos = noteDtos,

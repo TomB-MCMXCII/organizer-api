@@ -21,6 +21,16 @@ namespace OrganizerApi
         {
             services.AddControllers().AddNewtonsoftJson(); ;
             services.AddServices(Configuration);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("myPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44392")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +44,8 @@ namespace OrganizerApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
