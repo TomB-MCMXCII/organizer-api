@@ -10,7 +10,7 @@ export default class Day {
         this.toDoList = toDoList;
         this.schedule = schedule;
     }
-    id: number,
+    id: number;
     date: string;
     noteList: Array<Note>;
     toDoList: Array<ToDo>;
