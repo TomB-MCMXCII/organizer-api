@@ -31,7 +31,7 @@ namespace OrganizerApi.Services
         public IDayDto GetDay(string date)
         {
             var dateTime = DateTime.Parse(date);
-            var day = organizerDbContext.Days.Include(x => x.ToDoEntries).Include(x => x.Notes).Include(x => x.ScheduleEntries).Where(x => x.date == dateTime).First();
+            var day = organizerDbContext.Days.Include(x => x.ToDoEntries).Include(x => x.Notes).Include(x => x.ScheduleEntries).Where(x => x.date == dateTime).FirstOrDefault();
             var noteDtos = new List<INoteDto>();
             var toDoDtos = new List<IToDoDto>();
             var shceduleDtos = new List<IScheduleEntryDto>();

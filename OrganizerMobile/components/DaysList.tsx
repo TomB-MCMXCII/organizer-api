@@ -4,15 +4,9 @@ import { Text, View, FlatList} from "react-native";
 import Day from '../models/Day'
 import DaysListItem from '../components/DaysListItem'
 
-interface AppProps {
 
- }
- 
- interface AppState {
-    Days: Array<Day>
- }
-class Dayslist extends Component<AppProps, AppState> {
-    constructor(props: any) {  
+class Dayslist extends Component<IAppProps, IAppState> {
+    constructor(props: IAppProps) {  
         super(props);  
         this.state = {  
             Days: [],

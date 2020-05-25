@@ -8,7 +8,7 @@ const AppHeader = () => {
             <Header
             placement="center"
             leftComponent={{ icon: 'home', color: '#fff', size: 35, onPress: () => console.log() }}
-            centerComponent={{ text: 'Today', style: { color: '#fff', fontSize:25 } }}
+            centerComponent={{ text: 'Welcome', style: { color: '#fff', fontSize:25 } }}
             rightComponent={{ icon: 'refresh', color: '#fff', size: 35 }}
             containerStyle={{
                 backgroundColor: '#3D6DCC',
