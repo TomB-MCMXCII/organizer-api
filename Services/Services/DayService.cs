@@ -47,6 +47,7 @@ namespace OrganizerApi.Services
             {
                 toDoDtos.Add(new ToDoDto()
                 {
+                    Id = a.Id,
                     Date = a.Day.date.ToString(),
                     Text = a.Text,
                     IsDone = a.IsDone,
@@ -64,6 +65,7 @@ namespace OrganizerApi.Services
             }
             return new DayDto()
             {
+                id = day.Id,
                 Date = day.date,
                 NoteDtos = noteDtos,
                 ToDoDtos = toDoDtos,
@@ -91,6 +93,7 @@ namespace OrganizerApi.Services
                 {
                     toDoDtos.Add(new ToDoDto()
                     {
+                        Id = a.Id,
                         Date = a.Day.date.ToString(),
                         Text = a.Text,
                         IsDone = a.IsDone,

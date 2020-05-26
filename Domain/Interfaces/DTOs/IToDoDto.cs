@@ -7,6 +7,7 @@ namespace OrganizerApi.Domain
 {
     public interface IToDoDto
     {
+        int Id { get; set; }
         string Text { get; set; }
         string Date { get; set; }
         bool IsDone { get; set; }
