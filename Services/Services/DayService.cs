@@ -69,6 +69,7 @@ namespace OrganizerApi.Services
                 Date = day.date,
                 NoteDtos = noteDtos,
                 ToDoDtos = toDoDtos,
+                ScheduleDtos = shceduleDtos
             };
         }
 
