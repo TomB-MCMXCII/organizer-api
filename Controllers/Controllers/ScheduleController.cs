@@ -20,5 +20,11 @@ namespace Controllers.Controllers
         {
             scheduleService.Add(scheduleDto);
         }
+        [Route("api/schedule/delete")]
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            scheduleService.Delete(id);
+        }
     }
 }

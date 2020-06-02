@@ -35,6 +35,7 @@ namespace OrganizerApi.Services
             var noteDtos = new List<INoteDto>();
             var toDoDtos = new List<IToDoDto>();
             var shceduleDtos = new List<IScheduleEntryDto>();
+            //could make a factory to create dto objects
             foreach (var a in day.Notes)
             {
                 noteDtos.Add(new NoteDto()
@@ -57,10 +58,11 @@ namespace OrganizerApi.Services
             {
                 shceduleDtos.Add(new ScheduleEntryDto()
                 {
+                    Id = a.Id,
                     Date = a.Day.date.ToString(),
                     Text = a.Text,
-                    StartTime = a.StartTime.ToString(),
-                    EndTime = a.EndTime.ToString()
+                    StartTime = a.StartTime.ToShortTimeString(),
+                    EndTime = a.EndTime.ToShortTimeString()
                 });
             }
             return new DayDto()
@@ -106,8 +108,8 @@ namespace OrganizerApi.Services
                     {
                         Date = a.Day.date.ToString(),
                         Text = a.Text,
-                        StartTime = a.StartTime.ToString(),
-                        EndTime = a.EndTime.ToString()
+                        StartTime = a.StartTime.ToShortTimeString(),
+                        EndTime = a.EndTime.ToShortTimeString()
                     });
                 }
                 var day = new DayDto()
