@@ -8,7 +8,7 @@ namespace Domain.Interfaces
     public interface IDayDto
     {
         int id { get; set; }
-        DateTime Date { get; set; }
+        string date { get; set; }
         ICollection<INoteDto> NoteDtos { get; set; }
         ICollection<IToDoDto> ToDoDtos { get; set; }
         ICollection<IScheduleEntryDto> ScheduleDtos { get; set; }

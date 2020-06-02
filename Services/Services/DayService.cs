@@ -1,7 +1,9 @@
-﻿using Domain.DTOs;
+﻿using Domain;
+using Domain.DTOs;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using OrganizerApi.Domain;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +30,7 @@ namespace OrganizerApi.Services
             organizerDbContext.SaveChanges();
         }
 
-        public IDayDto GetDay(string date)
+        public ServiceResult<T> GetDay<T>(string date) where T : BaseDto
         {
             var dateTime = DateTime.Parse(date);
             var day = organizerDbContext.Days.Include(x => x.ToDoEntries).Include(x => x.Notes).Include(x => x.ScheduleEntries).Where(x => x.date == dateTime).FirstOrDefault();
@@ -65,14 +67,16 @@ namespace OrganizerApi.Services
                     EndTime = a.EndTime.ToShortTimeString()
                 });
             }
-            return new DayDto()
+            var dayDto =  new DayDto()
             {
                 id = day.Id,
-                Date = day.date,
+                date = day.date.ToString(),
                 NoteDtos = noteDtos,
                 ToDoDtos = toDoDtos,
                 ScheduleDtos = shceduleDtos
             };
+            return new ServiceResult<T>(dayDto, true);
+           
         }
 
         public ICollection<IDayDto> GetDays()
@@ -88,6 +92,7 @@ namespace OrganizerApi.Services
                 {
                     noteDtos.Add(new NoteDto()
                     {
+                        id = a.Id,
                         date = a.Day.date.ToString(),
                         text = a.Text
                     });
@@ -115,7 +120,7 @@ namespace OrganizerApi.Services
                 var day = new DayDto()
                 {
                     id = d.Id,
-                    Date = d.date,
+                    date = d.date.ToString(),
                     ToDoDtos = toDoDtos,
                     NoteDtos = noteDtos,
                     ScheduleDtos = scheduleDtos

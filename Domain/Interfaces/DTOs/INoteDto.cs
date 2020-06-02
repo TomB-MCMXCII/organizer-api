@@ -7,6 +7,7 @@ namespace OrganizerApi.Domain
 {
     public interface INoteDto
     {
+        int id { get; set; }
         string date { get; set; }
         string text { get; set; }
     }

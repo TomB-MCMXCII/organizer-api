@@ -1,4 +1,6 @@
-﻿using Domain.Interfaces;
+﻿using Domain;
+using Domain.Interfaces;
+using Services;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,6 +10,6 @@ namespace OrganizerApi.Domain
     {
         void Delete(string date);
         ICollection<IDayDto> GetDays();
-        IDayDto GetDay(string date);
+        ServiceResult<T> GetDay<T>(string date) where T : BaseDto;
     }
 }
