@@ -27,15 +27,32 @@ namespace Controllers.Controllers
         }
         [Route("api/day/getDay")]
         [HttpGet]
-        public IDayDto GetDay(string date)
+        public IActionResult GetDay(string date)
         {
-           return  dayService.GetDay(date);
+            var serviceResult = dayService.GetDay(date);
+            if (serviceResult.result)
+            {
+                return Ok(serviceResult.baseDto);
+            }
+            else
+            {
+                return NoContent();
+            }
+           
         }
         [Route("api/day/getDays")]
         [HttpGet]
-        public ICollection<IDayDto> GetDays()
+        public IActionResult GetDays()
         {
-            return dayService.GetDays();
+            var serviceResult = dayService.GetDays();
+            if(serviceResult.result)
+            {
+                return Ok(serviceResult.dayDtoList);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
     }

@@ -14,12 +14,14 @@ namespace OrganizerApi.Services
         }
         public void Add(T toDoDto)
         {
-            var day = organizerDbContext.Days.Find(DateTime.Parse(toDoDto.Date));
+            var convertedDate = DateTime.Parse(toDoDto.Date);
+            var date = new DateTime(convertedDate.Year, convertedDate.Month, convertedDate.Day, 0, 0, 0);//sets time to 00:00:00
+            var day = organizerDbContext.Days.Find(date);
             if (day == null)
             {
                 day = new Day()
                 {
-                    date = DateTime.Parse(toDoDto.Date)
+                    date = date
                 };
 
                 var toDo = new ToDo()
