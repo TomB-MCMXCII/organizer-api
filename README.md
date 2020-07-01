@@ -1,2 +1,2 @@
 # organizer-api
-This is a web api project to save and retrieve information on tasks and schedule on a particular day
+This is a web api project to save and fetch todos, scheduleItems and notes.
